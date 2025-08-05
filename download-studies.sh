@@ -61,7 +61,8 @@ for suid in "${study_uids[@]}"
 do
     echo "===> getting study with UID: $suid"
     mkdir "$patient_dir/$suid"
-    getscu -v  -aec "$aec"  "$server" "$port" -P -k  "0008,0052=STUDY" -k "0020,000D=$suid" -k "0010,0020=$patientid" -od "$patient_dir/$suid"
+    echo "getscu -v +v  -aec \"$aec\"  \"$server\" \"$port\" -P -k  \"0008,0052=STUDY\" -k \"0020,000D=$suid\" -k \"0010,0020=$patientid\" -od \"$patient_dir/$suid\""
+    getscu -v +v  -aec "$aec"  "$server" "$port" -P -k  "0008,0052=STUDY" -k "0020,000D=$suid" -k "0010,0020=$patientid" -od "$patient_dir/$suid"
 done
 
 echo "===> Saved to: $patient_dir"
